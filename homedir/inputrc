@@ -1,0 +1,9 @@
+# the following line is actually
+# equivalent to "\C-?": delete-char
+# "\e[3~": delete-char
+# set horizontal-scroll-mode On
+# 
+set editing-mode vi
+set show-all-if-ambiguous On
+set visible-stats On
+set mark-symlinked-directories On

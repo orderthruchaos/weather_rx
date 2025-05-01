@@ -15,9 +15,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV.fetch('WEATHER_RX_DB_USER') { 'weather_rx' } %>
+  password: <%= ENV.fetch('WEATHER_RX_DB_PSWD') { raise 'Must set WEATHER_RX_DB_PSWD' } %>
+  host: <%= ENV.fetch('WEATHER_RX_DB_HOST') { 'localhost' } %>
+  port: <%= ENV.fetch('WEATHER_RX_DB_PORT') { 5432 } %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
 
 
 development:

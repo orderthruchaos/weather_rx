@@ -1,14 +1,7 @@
 RAILS_ENV := development
 DC_SERVICE := web
 
-up:
-	@docker compose up 
-
-upd:
-	@docker compose up -d
-
-down:
-	@docker compose down
+default: up
 
 bash:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bash -i -l
@@ -19,10 +12,19 @@ dbmigrate:
 dbrollback:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle exec rails db:rollback
 
+down:
+	@docker compose down
+
 railsc:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle exec rails c
 
 test:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle exec rails test
 
-.PHONY: up upd down bash dbmigrate dbrollback railsc test
+up:
+	@docker compose up
+
+upd:
+	@docker compose up -d
+
+.PHONY: default bash dbmigrate dbrollback down railsc test up upd

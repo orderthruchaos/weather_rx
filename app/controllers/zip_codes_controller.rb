@@ -1,2 +1,0 @@
-class ZipCodesController < ApplicationController
-end

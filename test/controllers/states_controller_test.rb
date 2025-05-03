@@ -17,7 +17,7 @@ class StatesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create state" do
     assert_difference("State.count") do
-      post states_url, params: { state: { abbreviation: 'ZZ', name: 'Sleeper' } }
+      post states_url, params: { state: { abbreviation: "ZZ", name: "Sleeper" } }
     end
 
     assert_redirected_to state_url(State.last)

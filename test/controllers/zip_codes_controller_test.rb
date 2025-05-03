@@ -17,7 +17,7 @@ class ZipCodesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create zip_code" do
     assert_difference("ZipCode.count") do
-      post zip_codes_url, params: { zip_code: { code: @zip_code.code } }
+      post zip_codes_url, params: { zip_code: { code: '99999' } }
     end
 
     assert_redirected_to zip_code_url(ZipCode.last)

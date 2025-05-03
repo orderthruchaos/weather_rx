@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @zip_code %>
+
+<div>
+  <%= link_to "Edit this zip code", edit_zip_code_path(@zip_code) %> |
+  <%= link_to "Back to zip codes", zip_codes_path %>
+
+  <%= button_to "Destroy this zip code", @zip_code, method: :delete %>
+</div>

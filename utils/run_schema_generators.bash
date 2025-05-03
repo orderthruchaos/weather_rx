@@ -124,6 +124,7 @@ fi
 # functions # {{{1
 
 
+# Sleeps for 3-7 seconds
 function short_rest () {
   local -i r=$(($RANDOM % 5 + 3))
   info "Sleeping for $r seconds"
@@ -132,7 +133,7 @@ function short_rest () {
 
 function ber () {
   $verbose && info "$dry || bundle exec rails $*"
-  # $dry || bundle exec rails "$@"
+  $dry || bundle exec rails "$@"
 }
 
 function generate () { ber generate "$@"; }
@@ -152,14 +153,15 @@ function scaffold () { generate scaffold "$@"; }
 cdod "$top_dir"
 
 
-controller home index
+# # Controllers:
+# controller home index
 
-# Has models:
-scaffold zip_code 'code:string{5}:uniq'
-short_rest
-scaffold state 'abbreviation:string{2}:uniq' 'name:string'
-short_rest
-scaffold address 'line_1:string' 'line_2:string' 'city' 'state:references' 'zip_code:references'
+# # Has models:
+# scaffold zip_code 'code:string{5}:uniq'
+# short_rest
+# scaffold state 'abbreviation:string{2}:uniq' 'name:string'
+# short_rest
+# scaffold address 'line_1:string' 'line_2:string' 'city' 'state:references' 'zip_code:references'
 
 
 # vim: ft=sh fdm=marker fdl=4 sw=2 sts=2 ts=8 et

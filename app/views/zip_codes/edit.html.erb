@@ -1,0 +1,12 @@
+<% content_for :title, "Editing zip code" %>
+
+<h1>Editing zip code</h1>
+
+<%= render "form", zip_code: @zip_code %>
+
+<br>
+
+<div>
+  <%= link_to "Show this zip code", @zip_code %> |
+  <%= link_to "Back to zip codes", zip_codes_path %>
+</div>

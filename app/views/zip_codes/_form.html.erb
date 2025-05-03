@@ -1,0 +1,22 @@
+<%= form_with(model: zip_code) do |form| %>
+  <% if zip_code.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(zip_code.errors.count, "error") %> prohibited this zip_code from being saved:</h2>
+
+      <ul>
+        <% zip_code.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

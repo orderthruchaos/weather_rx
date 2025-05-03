@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Zip codes" %>
+
+<h1>Zip codes</h1>
+
+<div id="zip_codes">
+  <% @zip_codes.each do |zip_code| %>
+    <%= render zip_code %>
+    <p>
+      <%= link_to "Show this zip code", zip_code %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New zip code", new_zip_code_path %>

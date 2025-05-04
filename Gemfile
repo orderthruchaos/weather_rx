@@ -44,6 +44,7 @@ gem "thruster", require: false
 
 gem "react-rails", "~> 3.2"
 gem "dotenv-rails", "~> 3.1"
+gem "rest-client", "~> 2.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -65,4 +66,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  # gem "rspec", "~> 3.13"
+  # gem "rspec-rails", "~> 8.0"
+  # gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
 end

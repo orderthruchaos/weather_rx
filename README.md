@@ -31,9 +31,37 @@ Documentation:  https://www.weather.gov/documentation/services-web-api
 
 OpenAPI Specification (JSON-DL):  https://api.weather.gov/openapi.json
 
+Necessary endpoints:
+
+  - `https://api.weather.gov/points/{lat},{lon}`
+    - `grid_x = response["properties"]["gridX"]`
+    - `grid_y = response["properties"]["gridY"]`
+  - `https://api.weather.gov/gridpoints/LWX/{gridX},{gridY}/forecast`
+  - `https://api.weather.gov/gridpoints/LWX/{gridX},{gridY}/forecast/hourly`
+
+Authentication is done via User-Agent, with should have the following format:
+
+```
+User-Agent: (myweatherapp.com, contact@myweatherapp.com)
+```
+
+Results should be GeoJSON:
+
+```
+Accept: application/geo+json
+```
+
 ### US Census Geocodeing Service
 
+The US Census Geocoding Services API will be used to get the latitude and
+longitude of an address.
+
 Documentation:  https://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.html
+
+Example API call:  https://geocoding.geo.census.gov/geocoder/locations/address?street=4600+Silver+Hill+Rd&city=Washington&state=DC&benchmark=4&format=json
+
+Note that `benchmark=4` means the current benchmark.  The cleaned up JSON
+result is in `test/data/address_example.json`
 
 ### External Data Files
 

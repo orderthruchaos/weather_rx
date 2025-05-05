@@ -33,6 +33,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+RUN gem update --system
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \

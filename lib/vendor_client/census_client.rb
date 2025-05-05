@@ -1,4 +1,4 @@
-require_relative 'base_client'
+require_relative "base_client"
 
 module VendorClient
   class CensusClient < BaseClient

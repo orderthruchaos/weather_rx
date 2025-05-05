@@ -1,4 +1,4 @@
-require 'rest-client'
+require "rest-client"
 
 module VendorClient
   class BaseClient
@@ -8,8 +8,8 @@ module VendorClient
       @address = address
     end
 
-    def get(url, params: {}, cache_key: nil, cache_expires: 2.weeks.to_i)
-      cache_key ||= default_cache_key
+    def get(url, params: {}, cache_key: default_cache_key, cache_expires: 2.weeks.to_i)
+      # cache_key ||= default_cache_key
       Rails.cache.fetch(cache_key, expires_in: cache_expires) do
         RestClient.get(url, { **headers, params: params })
       end

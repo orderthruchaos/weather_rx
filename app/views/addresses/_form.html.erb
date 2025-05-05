@@ -28,12 +28,12 @@
 
   <div>
     <%= form.label :state_id, style: "display: block" %>
-    <%= form.text_field :state_id %>
+    <%= form.select :state_id, @states.map { |state| [state.name, state.id] } %>
   </div>
 
   <div>
-    <%= form.label :zip_code_id, style: "display: block" %>
-    <%= form.text_field :zip_code_id %>
+    <%= form.label :"zip_code.code", inner_text: 'Zip code', style: "display: block" %>
+    <%= form.text_field :"zip_code.code", value: address&.zip_code&.code %>
   </div>
 
   <div>

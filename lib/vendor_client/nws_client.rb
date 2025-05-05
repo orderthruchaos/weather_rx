@@ -1,4 +1,4 @@
-require_relative 'base_client'
+require_relative "base_client"
 
 module VendorClient
   class NwsClient < BaseClient
@@ -59,11 +59,11 @@ module VendorClient
     end
 
     def user_agent_host
-      ENV.fetch('NWS_API_USER_AGENT_HOST') { 'example.com' }
+      ENV.fetch("NWS_API_USER_AGENT_HOST") { "example.com" }
     end
 
     def user_agent_email
-      ENV.fetch('NWS_API_USER_AGENT_EMAIL') { 'no-reply@example.com' }
+      ENV.fetch("NWS_API_USER_AGENT_EMAIL") { "no-reply@example.com" }
     end
   end
 end

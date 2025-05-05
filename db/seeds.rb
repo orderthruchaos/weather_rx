@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'csv'
+require 'pp'
+
+STATE_NAMES_PATH = File.join(Rails.root, 'db', 'data', 'us_states_and_territories.csv')
+
+CSV.foreach(STATE_NAMES_PATH, headers: true, header_converters: :symbol) do |row|
+  pp State.find_or_create_by!(abbreviation: row[:abbreviation], name: row[:name])
+end

@@ -30,16 +30,16 @@ module VendorClient
       @forecast_cache_key ||= "#{self.class.name}/forecast/#{address.zip_code.id}"
     end
 
-    def hourly_url
-      @hourly_url ||= metadata["properties"]["forecastHourly"]
+    def hourly_forecast_url
+      @hourly_forecast_url ||= metadata["properties"]["forecastHourly"]
     end
 
-    def hourly
-      @hourly ||= get(hourly_url, cache_key: hourly_cache_key, cache_expires: 30.minutes.to_i)
+    def hourly_forecast
+      @hourly_forecast ||= get(hourly_forecast_url, cache_key: hourly_forecast_cache_key, cache_expires: 30.minutes.to_i)
     end
 
-    def hourly_cache_key
-      @hourly_cache_key ||= "#{self.class.name}/hourly/#{address.zip_code.id}"
+    def hourly_forecast_cache_key
+      @hourly_forecast_cache_key ||= "#{self.class.name}/hourly_forecast/#{address.zip_code.id}"
     end
 
     def latitude

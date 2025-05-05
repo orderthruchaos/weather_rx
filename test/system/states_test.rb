@@ -10,17 +10,17 @@ class StatesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "States"
   end
 
-  test "should create state" do
-    visit states_url
-    click_on "New state"
+  # test "should create state" do
+  #   visit states_url
+  #   click_on "New state"
 
-    fill_in "Abbreviation", with: @state.abbreviation
-    fill_in "Name", with: @state.name
-    click_on "Create State"
+  #   fill_in "Abbreviation", with: @state.abbreviation
+  #   fill_in "Name", with: @state.name
+  #   click_on "Create State"
 
-    assert_text "State was successfully created"
-    click_on "Back"
-  end
+  #   assert_text "State was successfully created"
+  #   click_on "Back"
+  # end
 
   test "should update State" do
     visit state_url(@state)

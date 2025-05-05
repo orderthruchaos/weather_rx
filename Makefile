@@ -6,14 +6,17 @@ default: up
 bash:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bash -i -l
 
-# binstall:
-#         @docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle install
+build:
+	@docker compose build
 
 dbmigrate:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle exec rails db:migrate
 
 dbrollback:
 	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle exec rails db:rollback
+
+dbsetup:
+	@docker compose exec -e RAILS_ENV=$(RAILS_ENV) $(DC_SERVICE) bundle exec rails db:setup
 
 down:
 	@docker compose down

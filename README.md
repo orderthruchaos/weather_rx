@@ -23,6 +23,23 @@ Things you may want to cover:
 
 * ...
 
+## Environment Variables
+
+| Name                       | Description                                           | Default                |
+| ------------------------   | ----------------------------------------------------- | ---------------------- |
+| `RAILS_ENV`                | Rails environment                                     | `development`          |
+| `POSTGRES_USER`            | Database user to be used for migrations               | `$USER`                |
+| `POSTGRES_PASSWORD`        | Password for application database user                | `$USER`                |
+| `POSTGRES_DB`              | Initial database created for connection to the server | `$USER`                |
+| `WEATHER_RX_DB_HOST`       | Application database host name                        | `postgres`             |
+| `WEATHER_RX_DB_PORT`       | Application database port number                      | `5432`                 |
+| `WEATHER_RX_DB_PSWD`       | Application database password                         | _N/A_                  |
+| `WEATHER_RX_DB_USER`       | Application database username                         | `$USER`                |
+| `WEATHER_RX_REDIS_PW`      | Application Redis server password                     | _N/A_                  |
+| `NWS_API_USER_AGENT_HOST`  | Host for NWS API authentication                       | `example.com`          |
+| `NWS_API_USER_AGENT_EMAIL` | Email address for NWS API authentication              | `no-reply@example.com` |
+| `REDIS_URL`                | URL for Redis cache server                            | `redis://redis:6379`   |
+
 ## External APIs
 
 ### National Weather Service
@@ -34,10 +51,11 @@ OpenAPI Specification (JSON-DL):  https://api.weather.gov/openapi.json
 Necessary endpoints:
 
   - `https://api.weather.gov/points/{lat},{lon}`
+    - `station = response["properties"]["gridId"]`
     - `grid_x = response["properties"]["gridX"]`
     - `grid_y = response["properties"]["gridY"]`
-  - `https://api.weather.gov/gridpoints/LWX/{gridX},{gridY}/forecast`
-  - `https://api.weather.gov/gridpoints/LWX/{gridX},{gridY}/forecast/hourly`
+  - `https://api.weather.gov/gridpoints/{station}/{gridX},{gridY}/forecast`
+  - `https://api.weather.gov/gridpoints/{station}/{gridX},{gridY}/forecast/hourly`
 
 Authentication is done via User-Agent, with should have the following format:
 
@@ -45,7 +63,7 @@ Authentication is done via User-Agent, with should have the following format:
 User-Agent: (myweatherapp.com, contact@myweatherapp.com)
 ```
 
-Results should be GeoJSON:
+Results are returned as GeoJSON:
 
 ```
 Accept: application/geo+json

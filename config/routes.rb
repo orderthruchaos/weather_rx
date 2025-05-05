@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   get "/", to: "addresses#new"
 
+  get "/forecasts/:address_id/forecast", to: "forecasts#forecast"
+  get "/forecasts/:address_id/hourly_forecast", to: "forecasts#hourly_forecast"
+
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

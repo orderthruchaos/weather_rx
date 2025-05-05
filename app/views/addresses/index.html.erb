@@ -11,16 +11,12 @@
       <%= link_to "Show this address", address %>
     </p>
     <p>
-      <%= button_to('Standard forecast',
-                    '/forecasts/forecast',
-                    { method: :get },
-                    { form: { address_id: address.id } }) %>
+      <%= link_to("Standard forecast",
+                  "/forecasts/#{address.id}/forecast") %>
     </p>
     <p>
-      <%= button_to('Hourly forecast',
-                    '/forecasts/hourly_forecast',
-                    { method: :get },
-                    { form: { address_id: address.id } }) %>
+      <%= link_to('Hourly forecast',
+                  "/forecasts/#{address.id}/hourly_forecast") %>
     </p>
   <% end %>
 </div>

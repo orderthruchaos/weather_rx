@@ -19,20 +19,20 @@ class ZipCodesController < ApplicationController
   def edit
   end
 
-  # # POST /zip_codes or /zip_codes.json
-  # def create
-  #   @zip_code = ZipCode.new(zip_code_params)
+  # POST /zip_codes or /zip_codes.json
+  def create
+    @zip_code = ZipCode.new(zip_code_params)
 
-  #   respond_to do |format|
-  #     if @zip_code.save
-  #       format.html { redirect_to @zip_code, notice: "Zip code was successfully created." }
-  #       format.json { render :show, status: :created, location: @zip_code }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @zip_code.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @zip_code.save
+        format.html { redirect_to @zip_code, notice: "Zip code was successfully created." }
+        format.json { render :show, status: :created, location: @zip_code }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @zip_code.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /zip_codes/1 or /zip_codes/1.json
   def update

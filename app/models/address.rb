@@ -7,4 +7,16 @@ class Address < ApplicationRecord
 
   validates :state, presence: true
   validates :zip_code, presence: true
+
+  delegate :latitude, to: :census_client
+  delegate :location, to: :census_client
+  delegate :longitude, to: :census_client
+
+  def census_client
+    @census_client ||= VendorClient::CensusClient.new(self)
+  end
+
+  def location
+    @location ||= census_client.location
+  end
 end

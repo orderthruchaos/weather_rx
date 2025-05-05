@@ -7,11 +7,11 @@ module VendorClient
     ADDRESS_ENDPOINT = "https://geocoding.geo.census.gov/geocoder/locations/address"
 
     def location
-      @location ||= get(url, params)
+      @location ||= get(url, params: params)
     end
 
     def coordinates
-      location["result"]["addressMatches"]["coordinates"]
+      location["result"]["addressMatches"][0]["coordinates"]
     end
 
     def latitude
@@ -33,7 +33,7 @@ module VendorClient
         street: address.line_1,
         city: address.city,
         state: address.state.abbreviation,
-        zip: address.zip_code.zip
+        zip: address.zip_code.code
       }
     end
   end

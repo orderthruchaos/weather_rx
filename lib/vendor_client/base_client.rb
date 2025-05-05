@@ -11,7 +11,8 @@ module VendorClient
     def get(url, params: {}, cache_key: default_cache_key, cache_expires: 2.weeks.to_i)
       # cache_key ||= default_cache_key
       Rails.cache.fetch(cache_key, expires_in: cache_expires) do
-        RestClient.get(url, { **headers, params: params })
+        data = RestClient.get(url, { **headers, params: params })
+        JSON.parse(data.body)
       end
     end
 

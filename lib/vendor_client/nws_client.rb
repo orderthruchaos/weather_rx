@@ -44,14 +44,14 @@ module VendorClient
 
     def latitude
       # # TODO
-      # metadata[""][""]
-      38.8894
+      # 38.8894
+      address&.latitude
     end
 
     def longitude
       # # TODO
-      # metadata[""][""]
-      -77.0352
+      # -77.0352
+      address&.longitude
     end
 
     def user_agent

@@ -11,7 +11,11 @@ module VendorClient
     end
 
     def metadata
-      @metadata ||= get(metadata_url)
+      @metadata ||= get(metadata_url, cache_key: metadata_cache_key)
+    end
+
+    def metadata_cache_key
+      @metadata_cache_key ||= "#{self.class.name}/metadata/#{address.id}"
     end
 
     def forecast_url
@@ -19,7 +23,11 @@ module VendorClient
     end
 
     def forecast
-      @forecast ||= get(forecast_url)
+      @forecast ||= get(forecast_url, cache_key: forecast_cache_key, cache_expires: 30.minutes.to_i)
+    end
+
+    def forecast_cache_key
+      @forecast_cache_key ||= "#{self.class.name}/forecast/#{address.zip_code.id}"
     end
 
     def hourly_url
@@ -27,18 +35,22 @@ module VendorClient
     end
 
     def hourly
-      @hourly ||= get(hourly_url)
+      @hourly ||= get(hourly_url, cache_key: hourly_cache_key, cache_expires: 30.minutes.to_i)
+    end
+
+    def hourly_cache_key
+      @hourly_cache_key ||= "#{self.class.name}/hourly/#{address.zip_code.id}"
     end
 
     def latitude
       # # TODO
-      # address.latitude
+      # metadata[""][""]
       38.8894
     end
 
     def longitude
       # # TODO
-      # address.longitude
+      # metadata[""][""]
       -77.0352
     end
 

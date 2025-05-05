@@ -14,7 +14,7 @@ class ZipCodesTest < ApplicationSystemTestCase
     visit zip_codes_url
     click_on "New zip code"
 
-    fill_in "Code", with: @zip_code.code
+    fill_in "Code", with: "99999"
     click_on "Create Zip code"
 
     assert_text "Zip code was successfully created"

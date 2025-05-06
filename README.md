@@ -1,27 +1,35 @@
-# README
+# WeatherRx README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Docker Compose and GNU Make
 
-Things you may want to cover:
+This application was written to leverage Docker for system containerization.  A
+GNU Makefile was added to ease certain common development activities.
 
-* Ruby version
+Before doing anything, make sure the following environment variables are set
+in your shell for container setup (see __Environment Variables__ below for
+descriptions and defaults):
 
-* System dependencies
+* `RAILS_ENV`
+* `POSTGRES_USER`
+* `POSTGRES_PASSWORD`
+* `POSTGRES_DB`
 
-* Configuration
+These are for initial connection database creation, not application database
+setup.  Once these variables are set, you can either use `docker compose build`
+or `make build` to build the docker images.
 
-* Database creation
+At this point, you should create `.env.local`, `.env.development.local`, and
+`.env.test.local` files to add overrides for the remaining environment
+variables listed below.
 
-* Database initialization
+Next, to start the services, you can use `make up`, which does `docker compose up`,
+or `make upd` to add the `-d` flag for the `up` subcommand.
 
-* How to run the test suite
+You can use `make dbsetup` to initialize the databases for the system.
 
-* Services (job queues, cache servers, search engines, etc.)
+The application is accessed via: http://localhost:3000
 
-* Deployment instructions
-
-* ...
+The test suite can be run via `make test`.
 
 ## Environment Variables
 
